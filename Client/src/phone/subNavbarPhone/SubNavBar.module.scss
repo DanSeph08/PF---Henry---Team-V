@@ -1,3 +1,4 @@
+@media (min-width:961px) {
 .containerHide{
     margin-top: 10%;
     display: flex;
@@ -33,4 +34,45 @@
     margin-bottom: 5px;
     font-size: large;
     color: black;
+}
+}
+@media (min-width:320px) and (max-width:960px) {
+.containerHide {
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // overflow-x: scroll;
+        transform: translate(-100%);
+        height: 5vh;
+        width: 100vw;
+        transition: 1s;
+        filter: blur(50px);
+    }
+
+    .containerShow {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        // overflow-x: scroll;
+        transform: translate(0%);
+        backdrop-filter: blur(10px);
+        border-radius: 0.2rem;
+        height: 5vh;
+        width: 100vw;
+        transition: 1s;
+    }
+
+    .buttons{
+        background-color: rgba($color: #fafafa, $alpha: 0.9);
+        border-radius: 0.5rem;
+        padding: 2px;
+        width: 120px;
+        z-index: 120;
+        margin-left: 10px;
+        font-size: large;
+        color: black;
+    }
 }

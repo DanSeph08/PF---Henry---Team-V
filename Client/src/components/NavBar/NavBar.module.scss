@@ -2,15 +2,27 @@
 
 @media (min-width:320px) and (max-width:960px){
     .mainContainer {
-        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
+        margin: 0;
+        padding: 0;
+        z-index: 200;
+        justify-content: center;
     }
     .listContainer {
-        width: 90%;
+        list-style: none;
+        background-color: black;
+        box-shadow: 5px 5px 15px 0 $shadow-purple-color-dark;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        height: 70px;
+        margin: 0px;
+        margin-bottom: 0px;
+        font-family: 'Orbitron', sans-serif;
     }
     .home{
         

@@ -31,3 +31,52 @@
     margin: 0px;
     padding: 0px;
 }
+
+@media (min-width:320px) and (max-width:960px) {
+        .conatinerAll {
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10vh;
+            top: 0px;
+            left: 0px;
+        }
+
+        .containerUpNavbar {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        .iconMenu {
+            position: fixed;
+            width: 1.5rem;
+            top: 69px;
+            left: 75px;
+            z-index: 50;
+            filter: invert(1);
+        }
+
+        .iconCompany {
+            width: 90px;
+        }
+
+        .links {
+            width: 100px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+    .iconMenu {
+        position: fixed;
+        width: 1.5rem;
+        top: 69px;
+        left: 75px;
+        z-index: 50;
+        filter: invert(1);
+    }
+}
