@@ -37,18 +37,18 @@
 }
 }
 @media (min-width:320px) and (max-width:960px) {
-.containerHide {
-        margin-top: 10%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        // overflow-x: scroll;
-        transform: translate(-100%);
-        height: 5vh;
-        width: 100vw;
-        transition: 1s;
-        filter: blur(50px);
+    .containerHide {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            // overflow-x: scroll;
+            transform: translate(0%);
+            backdrop-filter: blur(10px);
+            border-radius: 0.2rem;
+            height: 5vh;
+            width: 100vw;
+            transition: 1s;
     }
 
     .containerShow {
