@@ -42,12 +42,14 @@ export const Card = ({
   const dispatch = useAppDispatch();
   let totalPrice = useAppSelector((state) => state.shoppingCartReducer.finalPriceForCheckout)
   const [saveInLocalStorage, setSaveInLocalStorage] = useState(false);
-  var todaysDiscount: any  = useAppSelector((state) => state.productReducer.todaysDiscount);
-
+  var todaysDiscount = useAppSelector(
+    (state) => state.productReducer.todaysDiscount
+  );
+  console.log('discountPrice', discountPrice)
   useEffect(() => {
     if (saveInLocalStorage === true) {
       dispatch(
-        saveShoppingCartInLocalStorage(listProductsShoppingCart, totalAmount)
+        saveShoppingCartInLocalStorage(listProductsShoppingCart, discountPrice)
       );
     }
     //esto verifica si el producto esta comprado, para cambiar el boton
@@ -62,11 +64,15 @@ export const Card = ({
     }
   },[])
 
-  useEffect(()  => {
-    if(todaysDiscount.discount !== 100 && genres.includes(todaysDiscount.genre) && parseFloat(price) !==discountPrice && !discountApplied){
+  useEffect(()  => { 
+    // @ts-ignore
+    if(parseFloat(price) !== 0 && todaysDiscount.discount !== 'No_Discount' && genres.includes(todaysDiscount.genre) && parseFloat(price) !==discountPrice && !discountApplied){
+      // @ts-ignore
       let finalPrice =  (((100 - todaysDiscount.discount) * parseFloat(price)) / 100);
-      finalPrice = parseFloat(finalPrice.toFixed(2));
-      setDiscountApplied(prev => prev = true)
+      // @ts-ignore
+      finalPrice = finalPrice.toFixed(2);
+      console.log('finalPrice', finalPrice)  
+      setDiscountApplied((prev) => (prev = true));
       setDiscountPrice(finalPrice);
     }
   }, [price]);
@@ -159,12 +165,14 @@ export const Card = ({
                   >
                     Add To Cart
                   </button>
-                  <button
-                    className={changeClass.classButton}
-                    onClick={addingToWishList}
-                  >
-                    Add Favourite
-                  </button>
+                  {isAuthenticated === true && (
+                    <button
+                      className={changeClass.classButton}
+                      onClick={addingToWishList}
+                    >
+                      Add Favourite
+                    </button>
+                  )}
                 </>
               ) : (
                 <p>Not avivable Game</p>

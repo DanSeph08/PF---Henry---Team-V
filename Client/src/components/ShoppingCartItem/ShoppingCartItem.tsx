@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 export const ShoppingCartItem = () => {
 
 	const dispatch = useAppDispatch();
-	const {user}:any = useAuth0();
+	const {user, isAuthenticated, loginWithRedirect}:any = useAuth0();
 	const userShoppingCartEmpty = useAppSelector((state) => state.shoppingCartReducer.emptyUserDBShoppingCart)
 
     if(typeof user !== 'undefined'){
@@ -50,10 +50,18 @@ useEffect( ()=>{
 								</tr>
 							</tbody>
 						</table>
+						{
+							
+						}
 						<button className={style.checkout}>
+							{
+								isAuthenticated ? (
 							<Link to='/checkout'>
 								<p>CHECKOUT</p>
 							</Link>
+							): <p onClick={() => loginWithRedirect()}>Please LogIn</p>
+							}
+							
 						</button>
 					</>
 				);

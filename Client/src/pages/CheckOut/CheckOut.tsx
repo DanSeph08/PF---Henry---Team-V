@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import { saveShoppingCartInLocalStorage } from "../../redux/actions/localStorageAction";
 import {MakeGift} from '../../components/MakeGift/MakeGift'
 import NavbarPhone from "../../phone/navBarPhone/navBarPhone";
+import discountIcon from "../../assets/discount-2.svg"
 
 export const CheckOut = () => {
   const dispatch = useAppDispatch();
@@ -20,8 +21,8 @@ export const CheckOut = () => {
   const [control, setControl] = useState(-1);
   const [saveInLocalStorage, setSaveInLocalStorage] = useState(false);
   const [friendMail, setFriendMail] = useState<string | null>('');
-  const [init_pointButton, setInit_PointButton] = useState(false)
-  const [loader, setLoader] = useState(false);
+  const [init_pointButton, setInit_PointButton] = useState< boolean | string>(false)
+  const [discountedProducts, setDiscountedProducts] = useState([]);
 
   const handleChildVariable = (friendMail: string | null) => {
     setFriendMail(friendMail);
@@ -42,6 +43,8 @@ export const CheckOut = () => {
   totalAmount = Math.round(totalAmount * 100) / 100;
   let items: any = listProductsShoppingCart;
   let todaysDiscount = useAppSelector((state) => state.productReducer.todaysDiscount)
+
+
 
 
   const deleteItem = (e: any) => {
@@ -79,6 +82,26 @@ export const CheckOut = () => {
   },[control]);
 
   var discount = useAppSelector((state) => state.productReducer.todaysDiscount)
+  // @ts-ignore
+  const verify_discount = listProductsShoppingCart.map(item => item.Genres)
+  const itemGenres = verify_discount.map(item => item)
+
+  var steveTotal = 0;
+  listProductsShoppingCart.forEach(item => {
+    // @ts-ignore
+    let genres = item.Genres.map(item => item.name);
+    var disc;
+    // @ts-ignore
+    if(genres.includes(discount.genre)){
+        // @ts-ignore
+      disc = (((100 - discount.discount) * parseFloat(item.price)) / 100);
+    } else {
+        // @ts-ignore
+      disc = Number(item.price)
+    }
+    steveTotal += disc;
+  })
+  
 
   const fetchCheckout = async () => {
     setLoader(true)
@@ -202,6 +225,12 @@ export const CheckOut = () => {
                     }
                 )}
                 <p className={styles.price}>Amount Payable: ${totalAmount}</p>
+                {steveTotal > 0 && (
+                <div className={styles.finalDiscount}>
+                  <img src={discountIcon} alt="" />
+                  <p className={styles.price}>Final Price Discount: ${steveTotal}</p>
+                </div>)
+                }
               </div>
             </div>
           </div>

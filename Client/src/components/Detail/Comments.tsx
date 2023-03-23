@@ -43,16 +43,16 @@ const Comments = () => {
   }, []); //hay que pasarle algo para que cuando se haga un comentario aparezca
 
   return (
-		<>
-			<div className={styles['comment-container']}>
-				<h3>Leave a Comment...</h3>
-				<div className='card flex justify-content-center'>
-					<Rating
-						value={stars}
-						onChange={(e: RatingChangeEvent) => setStars(Number(e.value))}
-						cancel={false}
-					/>
-				</div>
+    <>
+      <div className={styles["comment-container"]}>
+        <h3>Leave a Comment...</h3>
+        <div className="card flex justify-content-center">
+          <Rating
+            value={stars}
+            onChange={(e: any) => setStars(e.value)}
+            cancel={false}
+          />
+        </div>
 
 				<form className={styles['form-comment']} onSubmit={sendCommentHandler}>
 					<textarea

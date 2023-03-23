@@ -15,7 +15,7 @@ export const DetailCarousel = ({ images }:any) => {
   return (
     <section className={styles["carousel-container"]}>
       <button onClick={handleChangeImagePrev}>←</button>
-      {images.map((image: any, index: number) => (
+      {images.map((image:any, index:any) => (
         <div
           key={index}
           className={`${styles["carousel-img"]} ${
