@@ -20,7 +20,7 @@ export const PRUEBA = [
       "Nintendo Store",
       "Xbox 360 Store"
     ],
-    "price": "9.99",
+    "price": '9.99',
     "images": [
       "https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg",
       "https://media.rawg.io/media/screenshots/c38/c38f5aa479eebab20cedcdae370e6e18.jpg",
