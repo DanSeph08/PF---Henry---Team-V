@@ -78,3 +78,4 @@ export const PendingFr = (props:any) => {
 		);
 	}
 };
+// @ts-ignor

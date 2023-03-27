@@ -47,14 +47,9 @@ export interface User {
   }
 
 export interface Friend {
-  emailUser: string,
+  UserEmail: string,
   emailFriend: string,
   response: string
-}
-
-interface DiscountState {
-  discount: number,
-  genre: string
 }
 
 export interface ListSales {
@@ -62,4 +57,17 @@ export interface ListSales {
   Product:Name,
   priceUnitNet: string,
   UserEmail: string
+}
+
+interface Name {
+  name:string
+}
+
+interface DiscountState {
+  discount: number,
+  genre: string
+}
+
+interface ListFriends {
+  friendInList: Friend;
 }
